@@ -1,0 +1,56 @@
+/*****************************************
+    Links para armar el informe 
+******************************************/
+
+
+Scikit Learn enlace documentacion oficial para trabajar con datos texto,
+para realizar un sentiment analysis:
+https://scikit-learn.org/stable/tutorial/text_analytics/working_with_text_data.html
+
+
+
+
+
+/**********************************************
+    Cuestiones a tener en cuenta a la hora de 
+    limpiar los tweets antes de ingresarlos en 
+    el modelo para poder evaluar todo
+***********************************************/
+
+- Convertir el tw en lowercase
+- Quitar RT y Hashtags, los simbolos y los Users
+- Quitar los numeros, porque no aportan nada al sentiment analisis
+- Quitar los signos de puntuacion y caracteres especiales
+- Reemplazar las palabras alargadas, por ej: Awesooooooome se reemplazaria
+    por Awesome.
+- Quitar las Stopwords
+- Manejar la negacion con antonimos. A veces cuando se eliminan las Stopwords
+    la sentencia original termina cambiando su significado y eso no es lo que
+    se desea. Por ej un tw que es negativo, luego de que se le quitan las Stopwords
+    se transforma en un tw positivo, y eso no puede pasar. Porque cambia el tw original.
+    Para eso se cambia la palabra del tw por un antonimo para cuando se procese el tw
+    mantenga su significado original y no cambie.
+
+
+/*************************************************************
+	Comandos utiles para guardar matrices sparce y para guardar 
+	objetos en sklearn (esto va a ser necesario para no proce-
+	-sar todo devuelta cada vez que corra un nuevo algoritmo)
+****************************************************************/
+from joblib import dump, load	# usado para guardar y cargar sklearn objects
+from scipy.sparse import save_npz, load_npz  # usado para cargar/guardar matrices sparse
+
+
+
+/***************************************************
+        Observaciones importantes
+        MIRAAAAAAAAAAAAAAAAAAAAR
+*******************************************************/
+ CUANDO SE UTILIZA EL EL OPTIMIZADOR 'ADAM' NO SE PUEDE SETEAR EL VALOR DE 
+ 'epsilon=None'.NO FUNCIONA SI ESTA SETEADO EN NONE.
+ Cundo se utiliza el optimizador 'Adam' el valor del epsilon siempre debe ser un
+ numero pequeño mayor a cero, (number > 0).
+ Como solucion si uno no quiere poner number por ej number=0.001 o algo asi 
+ se puede poner el optimizador 'adam' con estas propiedades=
+    adam_opt= Adam(lr=learning_rate) y dejar el resto de propiedades como default
+    solas se ponen con su valor por default
