@@ -7,8 +7,13 @@ Scikit Learn enlace documentacion oficial para trabajar con datos texto,
 para realizar un sentiment analysis:
 https://scikit-learn.org/stable/tutorial/text_analytics/working_with_text_data.html
 
+Link para armar modelo Keras con dataset de avengers:
+https://towardsdatascience.com/keras-challenges-the-avengers-541346acb804
 
 
+Link HashingVectorizer, que ventajas tiene en contra de CountVectorizer,
+que es mas rapido para dataset mas grandes etc : 
+https://scikit-learn.org/stable/modules/generated/sklearn.feature_extraction.text.HashingVectorizer.html#sklearn.feature_extraction.text.HashingVectorizer
 
 
 /**********************************************
@@ -54,3 +59,8 @@ from scipy.sparse import save_npz, load_npz  # usado para cargar/guardar matrice
  se puede poner el optimizador 'adam' con estas propiedades=
     adam_opt= Adam(lr=learning_rate) y dejar el resto de propiedades como default
     solas se ponen con su valor por default
+
+
+    ***     TfidfVectorizer() devuelve floats mientras que CountVectorizer devuelve integers.
+            TfidfVectorizer asigna scores mientras que CountVectorizer cuenta las occurencias de 
+            palabras dentro del vector.

@@ -1,10 +1,6 @@
 # tweepy imports
 from tweepy import API, Cursor, OAuthHandler, Stream
 from tweepy.streaming import StreamListener
-# spacy imports
-from spacy.lang.en.stop_words import STOP_WORDS
-from spacy.lang.en import English
-
 
 import pandas as pd
 import numpy as np
@@ -12,6 +8,7 @@ import matplotlib.pyplot as plt
 import credentials as twitter_credentials
 import re
 import string
+import cleaningTweets
 
 
 class TwitterClient():
@@ -145,16 +142,9 @@ if __name__ == '__main__':
     
     # print the first 10 tweets
     top_10_tweets = df.head(10)
-    print(top_10_tweets)
+    print(top_10_tweets['tweets'])
 
-    
-    # Shows a grapich with tweets metrics
-  #  time_likes = pd.Series(data=df['len'].values, index=df['date'])
-   # time_likes.plot(figsize=(16, 4), color='r', label='length', legend=True)
-    
-    #time_favs = pd.Series(data=df['likes'].values, index=df['date'])
-    #time_favs.plot(figsize=(16, 4), color='b', label='likes', legend=True)
-    
-    #time_retweets = pd.Series(data=df['retweets'].values, index=df['date'])
-    #time_retweets.plot(figsize=(16, 4), color='g', label='retweets', legend=True)
-    #plt.show()
+    clean = cleaningTweets.Cleaner()
+    cleaned = clean.prepare_data(top_10_tweets['tweets'])
+    print(cleaned)
+    # tweet_analyzer.plot_tweet_info(df)
