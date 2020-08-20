@@ -116,6 +116,10 @@ class TweetAnalyzer():
         time_retweets = pd.Series(data=dataFrame['retweets'].values, index=dataFrame['date'])
         time_retweets.plot(figsize=(16, 4), color='g', label='retweets', legend=True)
         plt.show()    
+    
+    def getTweetsCleaned(self,tweets):
+        cleaner = cleaningTweets.Cleaner()
+        return cleaner.prepare_data(tweets)
 
 
 if __name__ == '__main__':
@@ -144,7 +148,8 @@ if __name__ == '__main__':
     top_10_tweets = df.head(10)
     print(top_10_tweets['tweets'])
 
-    clean = cleaningTweets.Cleaner()
-    cleaned = clean.prepare_data(top_10_tweets['tweets'])
+    #clean = cleaningTweets.Cleaner()
+    #cleaned = clean.prepare_data(top_10_tweets['tweets'])
+    cleaned = tweet_analyzer.getTweetsCleaned(top_10_tweets['tweets'])
     print(cleaned)
     # tweet_analyzer.plot_tweet_info(df)

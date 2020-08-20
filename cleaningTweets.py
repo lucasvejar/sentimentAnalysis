@@ -67,9 +67,6 @@ class Cleaner():
     def delete_elongated_words(self,word):
         reg = re.compile(r'(.)\1{2}')  # r'(\w*)(\w+)(\2)(\w*)'
         return self.replace_elongated_word(word) if reg.search(word) else word
-        #elongated = [ self.replace_elongated_word(word) for word in tweet.split() if reg.search(word) ]
-        #non_elongated_tweet = [ self.replace_elongated_word(word) for word in elongated ]
-        #return non_elongated_tweet
 
     def prepare_data(self, tweets):
         return [ self.spacy_tokenizer(tweet) for tweet in tweets]
