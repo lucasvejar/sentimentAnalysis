@@ -1,4 +1,4 @@
 __pycache__/
 .ipynb_checkpoints/
 credentials.py
-*.txt
+links.txt
