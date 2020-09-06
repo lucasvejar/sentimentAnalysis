@@ -43,5 +43,5 @@ print(nf)
 #nf.to_csv(data_dir / 'tweetsDataset1.csv')
 
 # reading the dataset stored with the correct format
-new = pd.read_csv(data_dir / 'tweetsDataset1.csv',skiprows=1,names=['Message','Target'])
-print(new)
+#new = pd.read_csv(data_dir / 'tweetsDataset1.csv',skiprows=1,names=['Message','Target'])
+#print(new)
