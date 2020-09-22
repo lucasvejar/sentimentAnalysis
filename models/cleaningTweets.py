@@ -14,7 +14,6 @@ class Cleaner():
         tokens = [ word.lemma_.lower().strip() if word.lemma_ != '-PRON-' else word.lower_ for word in tokens ]
         tokens = [ word for word in tokens if word not in STOP_WORDS and word not in punctuation ]
         tokens = [ self.delete_elongated_words(word) for word in tokens ]   # converting elongated words into normal words
-        # tokens = list(tokens)  # removing the duplicates tokens ? 
         return tokens
 
     def cleaning_tweet(self, tweet):
@@ -70,13 +69,3 @@ class Cleaner():
 
     def prepare_data(self, tweets):
         return [ self.spacy_tokenizer(tweet) for tweet in tweets]
-
-
-# This was a test code 
-if __name__ == '__main__':    
-    cl = Cleaner()
-    tweet = "@GolosoAlonso New #dotnotes! Todaaaay we're reviewing database fundamentals, including OLTP vs OLAP + data organization and 1 more. https://meet.google.com/rue. This is the new beggining"
-    print('original tweet: ',tweet)
-    print('clean tweet: ',cl.prepare_data([tweet]))
-
-    #print(cl.replace_elongated_word('aaaaaal'))
